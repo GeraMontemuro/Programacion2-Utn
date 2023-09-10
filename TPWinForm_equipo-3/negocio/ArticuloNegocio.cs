@@ -20,7 +20,7 @@ namespace negocio
 
             try
             {
-                conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB_v3; User ID =sa; Password = mawe;";
+                conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security = true;";
                 comando.CommandType = System.Data.CommandType.Text;
                 comando.CommandText = "SELECT Id,Nombre, Descripcion from Articulos";
                 comando.Connection = conexion;
