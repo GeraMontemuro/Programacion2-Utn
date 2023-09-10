@@ -8,6 +8,8 @@ namespace dominio
 {
     public class Articulo
     {
-        //lo logre <3
+       public int CodigoArticulo { get; set; }
+       public string Nombre { get; set; }
+       public string Descripcion { get; set; }
     }
 }
