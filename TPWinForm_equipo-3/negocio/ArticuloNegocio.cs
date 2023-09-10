@@ -15,32 +15,25 @@ namespace negocio
         public List<Articulo> listar()
         {
             List<Articulo> lista = new List<Articulo>();
-            SqlConnection conexion = new SqlConnection();
-            SqlCommand comando = new SqlCommand();
-            SqlDataReader lector;
+            AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security = true;";
-                comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "select Art.Id,Art.Nombre,Art.Descripcion, Ima.ImagenUrl  from Articulos Art\r\ninner join IMAGENES Ima ON Art.Id=Ima.Id\r\n";
-                comando.Connection = conexion;
+                datos.setearConsulta("select Art.Id,Art.Nombre,Art.Descripcion, Ima.ImagenUrl  from Articulos Art\r\ninner join IMAGENES Ima ON Art.Id=Ima.Id\r\n");
+                datos.ejecutarLectura();
 
-                conexion.Open();
-                lector = comando.ExecuteReader();
-
-                while (lector.Read())
+                while (datos.Lector.Read())
                 {
                     Articulo Articulo = new Articulo();
 
-                    Articulo.CodigoArticulo = (int)lector["Id"];
-                    Articulo.Nombre = (string)lector["Nombre"];
-                    Articulo.Descripcion = (string)lector["Descripcion"];
-                    Articulo.UrlImagen = (string)lector["ImagenUrl"];
+                    Articulo.CodigoArticulo = (int)datos.Lector["Id"];
+                    Articulo.Nombre = (string)datos.Lector["Nombre"];
+                    Articulo.Descripcion = (string)datos.Lector["Descripcion"];
+                    Articulo.UrlImagen = (string)datos.Lector["ImagenUrl"];
 
                     lista.Add(Articulo);
                 }
-                conexion.Close();
+                
 
             return lista;
             }
@@ -48,6 +41,10 @@ namespace negocio
             {
 
                 throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
     }
