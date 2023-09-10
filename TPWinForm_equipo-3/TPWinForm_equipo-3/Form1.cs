@@ -12,10 +12,10 @@ using dominio;
 
 namespace TPWinForm_equipo_3
 {
-    public partial class Form1 : Form
+    public partial class frmListado : Form
     {
         private List<Articulo> ListArticulo;
-        public Form1()
+        public frmListado()
         {
             InitializeComponent();
         }
