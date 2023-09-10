@@ -14,6 +14,7 @@ namespace TPWinForm_equipo_3
 {
     public partial class Form1 : Form
     {
+        private List<Articulo> ListArticulo;
         public Form1()
         {
             InitializeComponent();
@@ -22,8 +23,15 @@ namespace TPWinForm_equipo_3
         private void Form1_Load(object sender, EventArgs e)
         {
             ArticuloNegocio Art= new ArticuloNegocio();
-            dgvArticulo.DataSource = Art.listar();
-            
+            ListArticulo = Art.listar();
+            dgvArticulo.DataSource = ListArticulo;
+            pbxArticulo.Load(ListArticulo[0].UrlImagen);
+        }
+
+        private void dgvArticulo_SelectionChanged(object sender, EventArgs e)
+        {
+            Articulo aux = (Articulo)dgvArticulo.CurrentRow.DataBoundItem;
+            pbxArticulo.Load(aux.UrlImagen);
         }
     }
 }

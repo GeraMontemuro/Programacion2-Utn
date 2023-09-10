@@ -11,6 +11,7 @@ namespace negocio
 {
     public class ArticuloNegocio
     {
+       
         public List<Articulo> listar()
         {
             List<Articulo> lista = new List<Articulo>();
@@ -22,7 +23,7 @@ namespace negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security = true;";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "SELECT Id,Nombre, Descripcion from Articulos";
+                comando.CommandText = "select Art.Id,Art.Nombre,Art.Descripcion, Ima.ImagenUrl  from Articulos Art\r\ninner join IMAGENES Ima ON Art.Id=Ima.Id\r\n";
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -35,6 +36,7 @@ namespace negocio
                     Articulo.CodigoArticulo = (int)lector["Id"];
                     Articulo.Nombre = (string)lector["Nombre"];
                     Articulo.Descripcion = (string)lector["Descripcion"];
+                    Articulo.UrlImagen = (string)lector["ImagenUrl"];
 
                     lista.Add(Articulo);
                 }
