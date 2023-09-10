@@ -22,16 +22,30 @@ namespace TPWinForm_equipo_3
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ArticuloNegocio Art= new ArticuloNegocio();
+            ArticuloNegocio Art = new ArticuloNegocio();
             ListArticulo = Art.listar();
             dgvArticulo.DataSource = ListArticulo;
-            pbxArticulo.Load(ListArticulo[0].UrlImagen);
+            CambiarImagen(ListArticulo[0].UrlImagen);
         }
 
         private void dgvArticulo_SelectionChanged(object sender, EventArgs e)
         {
             Articulo aux = (Articulo)dgvArticulo.CurrentRow.DataBoundItem;
-            pbxArticulo.Load(aux.UrlImagen);
+            CambiarImagen(aux.UrlImagen);
+        }
+
+        private void CambiarImagen(string imagen)
+        {
+            try
+            {
+                pbxArticulo.Load(imagen);
+            }
+            catch (Exception)
+            {
+                pbxArticulo.Load("https://production.listennotes.com/podcasts/el-podcast-m%C3%A1s-random-del-mundo-L6I3Ep9lRTB-xB_PCg0EDch.1400x1400.jpg");
+            }
         }
     }
+
+
 }
