@@ -19,7 +19,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("select Art.Id,Art.Nombre,Art.Descripcion, Ima.ImagenUrl  from Articulos Art\r\ninner join IMAGENES Ima ON Art.Id=Ima.Id\r\n");
+                datos.setearConsulta("select Art.Id,Art.Nombre,Art.Descripcion, Ima.ImagenUrl  from Articulos Art\r\ninner join IMAGENES Ima ON Art.Id=Ima.IdArticulo\r\n");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
