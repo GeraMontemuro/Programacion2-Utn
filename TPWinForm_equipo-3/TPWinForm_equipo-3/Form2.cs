@@ -23,5 +23,10 @@ namespace TPWinForm_equipo_3
             ventana.ShowDialog();
 
         }
+
+        private void btnsalida_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

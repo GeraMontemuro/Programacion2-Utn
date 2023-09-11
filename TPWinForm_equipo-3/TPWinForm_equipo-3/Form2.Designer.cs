@@ -39,10 +39,11 @@
             this.btnListado.FlatAppearance.BorderSize = 0;
             this.btnListado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnListado.Font = new System.Drawing.Font("Wide Latin", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnListado.ForeColor = System.Drawing.Color.Maroon;
-            this.btnListado.Location = new System.Drawing.Point(22, 39);
+            this.btnListado.ForeColor = System.Drawing.Color.Transparent;
+            this.btnListado.Location = new System.Drawing.Point(31, 376);
+            this.btnListado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnListado.Name = "btnListado";
-            this.btnListado.Size = new System.Drawing.Size(313, 70);
+            this.btnListado.Size = new System.Drawing.Size(235, 57);
             this.btnListado.TabIndex = 0;
             this.btnListado.Text = "VER LISTA";
             this.btnListado.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -51,26 +52,33 @@
             // 
             // btnsalida
             // 
-            this.btnsalida.Image = ((System.Drawing.Image)(resources.GetObject("btnsalida.Image")));
-            this.btnsalida.Location = new System.Drawing.Point(76, 575);
+            this.btnsalida.BackColor = System.Drawing.Color.Transparent;
+            this.btnsalida.FlatAppearance.BorderSize = 0;
+            this.btnsalida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnsalida.Font = new System.Drawing.Font("Wide Latin", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnsalida.ForeColor = System.Drawing.Color.Transparent;
+            this.btnsalida.Location = new System.Drawing.Point(88, 481);
+            this.btnsalida.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnsalida.Name = "btnsalida";
-            this.btnsalida.Size = new System.Drawing.Size(163, 86);
+            this.btnsalida.Size = new System.Drawing.Size(178, 26);
             this.btnsalida.TabIndex = 1;
             this.btnsalida.Text = "SALIDA";
-            this.btnsalida.UseVisualStyleBackColor = true;
+            this.btnsalida.UseVisualStyleBackColor = false;
+            this.btnsalida.Click += new System.EventHandler(this.btnsalida_Click);
             // 
             // frmPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(702, 673);
+            this.ClientSize = new System.Drawing.Size(526, 547);
             this.Controls.Add(this.btnsalida);
             this.Controls.Add(this.btnListado);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ForeColor = System.Drawing.Color.Red;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VentanaPrincipal";
