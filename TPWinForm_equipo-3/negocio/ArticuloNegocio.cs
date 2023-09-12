@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using dominio;
 using System.Data;
+using System.Reflection;
 
 namespace negocio
 {
@@ -19,7 +20,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("select Art.Id,Art.Nombre,Art.Descripcion, Ima.ImagenUrl  from Articulos Art\r\ninner join IMAGENES Ima ON Art.Id=Ima.IdArticulo\r\n");
+                datos.setearConsulta("SELECT Art.Id AS Id, Art.Nombre, Art.Descripcion, MIN(Ima.ImagenUrl) AS ImagenUrl FROM ARTICULOS Art INNER JOIN IMAGENES Ima ON Art.Id = Ima.IdArticulo GROUP BY Art.Id, Art.Nombre, Art.Descripcion");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
