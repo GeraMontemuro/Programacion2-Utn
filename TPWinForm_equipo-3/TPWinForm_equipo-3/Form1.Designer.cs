@@ -111,12 +111,13 @@
             // 
             this.gbopciones.Controls.Add(this.rdbeliminar);
             this.gbopciones.Controls.Add(this.rdbmodificar);
+            this.gbopciones.Controls.Add(this.btnOpcion);
             this.gbopciones.Controls.Add(this.rdbagregar);
             this.gbopciones.Location = new System.Drawing.Point(24, 418);
             this.gbopciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbopciones.Name = "gbopciones";
             this.gbopciones.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gbopciones.Size = new System.Drawing.Size(439, 62);
+            this.gbopciones.Size = new System.Drawing.Size(439, 120);
             this.gbopciones.TabIndex = 5;
             this.gbopciones.TabStop = false;
             // 
@@ -132,7 +133,7 @@
             // 
             // btnOpcion
             // 
-            this.btnOpcion.Location = new System.Drawing.Point(24, 492);
+            this.btnOpcion.Location = new System.Drawing.Point(31, 67);
             this.btnOpcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOpcion.Name = "btnOpcion";
             this.btnOpcion.Size = new System.Drawing.Size(164, 30);
@@ -225,7 +226,6 @@
             this.ClientSize = new System.Drawing.Size(917, 537);
             this.Controls.Add(this.btndetalle);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnOpcion);
             this.Controls.Add(this.lblopcion);
             this.Controls.Add(this.gbopciones);
             this.Controls.Add(this.pbxArticulo);
