@@ -30,12 +30,7 @@
         {
             this.dgvArticulo = new System.Windows.Forms.DataGridView();
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
-            this.rdbagregar = new System.Windows.Forms.RadioButton();
-            this.rdbmodificar = new System.Windows.Forms.RadioButton();
-            this.rdbeliminar = new System.Windows.Forms.RadioButton();
-            this.gbopciones = new System.Windows.Forms.GroupBox();
             this.lblopcion = new System.Windows.Forms.Label();
-            this.btnOpcion = new System.Windows.Forms.Button();
             this.btobusqueda = new System.Windows.Forms.Button();
             this.tbbusqueda = new System.Windows.Forms.TextBox();
             this.cbbusqueda = new System.Windows.Forms.ComboBox();
@@ -44,9 +39,11 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.lblcategorias = new System.Windows.Forms.Label();
             this.lblMarcas = new System.Windows.Forms.Label();
+            this.btnArticulo = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
-            this.gbopciones.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,56 +68,6 @@
             this.pbxArticulo.TabIndex = 1;
             this.pbxArticulo.TabStop = false;
             // 
-            // rdbagregar
-            // 
-            this.rdbagregar.AutoSize = true;
-            this.rdbagregar.Location = new System.Drawing.Point(8, 23);
-            this.rdbagregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.rdbagregar.Name = "rdbagregar";
-            this.rdbagregar.Size = new System.Drawing.Size(124, 20);
-            this.rdbagregar.TabIndex = 2;
-            this.rdbagregar.TabStop = true;
-            this.rdbagregar.Text = "Agregar Articulo";
-            this.rdbagregar.UseVisualStyleBackColor = true;
-            // 
-            // rdbmodificar
-            // 
-            this.rdbmodificar.AutoSize = true;
-            this.rdbmodificar.Location = new System.Drawing.Point(149, 23);
-            this.rdbmodificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.rdbmodificar.Name = "rdbmodificar";
-            this.rdbmodificar.Size = new System.Drawing.Size(130, 20);
-            this.rdbmodificar.TabIndex = 3;
-            this.rdbmodificar.TabStop = true;
-            this.rdbmodificar.Text = "Modificar Articulo";
-            this.rdbmodificar.UseVisualStyleBackColor = true;
-            // 
-            // rdbeliminar
-            // 
-            this.rdbeliminar.AutoSize = true;
-            this.rdbeliminar.Location = new System.Drawing.Point(301, 23);
-            this.rdbeliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.rdbeliminar.Name = "rdbeliminar";
-            this.rdbeliminar.Size = new System.Drawing.Size(123, 20);
-            this.rdbeliminar.TabIndex = 4;
-            this.rdbeliminar.TabStop = true;
-            this.rdbeliminar.Text = "Eliminar Articulo";
-            this.rdbeliminar.UseVisualStyleBackColor = true;
-            // 
-            // gbopciones
-            // 
-            this.gbopciones.Controls.Add(this.rdbeliminar);
-            this.gbopciones.Controls.Add(this.rdbmodificar);
-            this.gbopciones.Controls.Add(this.btnOpcion);
-            this.gbopciones.Controls.Add(this.rdbagregar);
-            this.gbopciones.Location = new System.Drawing.Point(24, 418);
-            this.gbopciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gbopciones.Name = "gbopciones";
-            this.gbopciones.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gbopciones.Size = new System.Drawing.Size(439, 120);
-            this.gbopciones.TabIndex = 5;
-            this.gbopciones.TabStop = false;
-            // 
             // lblopcion
             // 
             this.lblopcion.AutoSize = true;
@@ -130,16 +77,6 @@
             this.lblopcion.Size = new System.Drawing.Size(102, 16);
             this.lblopcion.TabIndex = 6;
             this.lblopcion.Text = "Elija una opcion";
-            // 
-            // btnOpcion
-            // 
-            this.btnOpcion.Location = new System.Drawing.Point(31, 67);
-            this.btnOpcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnOpcion.Name = "btnOpcion";
-            this.btnOpcion.Size = new System.Drawing.Size(164, 30);
-            this.btnOpcion.TabIndex = 7;
-            this.btnOpcion.Text = "Aceptar";
-            this.btnOpcion.UseVisualStyleBackColor = true;
             // 
             // btobusqueda
             // 
@@ -189,7 +126,7 @@
             this.btndetalle.TabIndex = 12;
             this.btndetalle.Text = "Listar Detalle";
             this.btndetalle.UseVisualStyleBackColor = true;
-            this.btndetalle.Click += new System.EventHandler(this.button1_Click);
+            
             // 
             // comboBox1
             // 
@@ -217,6 +154,34 @@
             this.lblMarcas.TabIndex = 13;
             this.lblMarcas.Text = "Marcas";
             // 
+            // btnArticulo
+            // 
+            this.btnArticulo.Location = new System.Drawing.Point(39, 496);
+            this.btnArticulo.Name = "btnArticulo";
+            this.btnArticulo.Size = new System.Drawing.Size(126, 29);
+            this.btnArticulo.TabIndex = 13;
+            this.btnArticulo.Text = "Agregar Artículo";
+            this.btnArticulo.UseVisualStyleBackColor = true;
+            this.btnArticulo.Click += new System.EventHandler(this.btnArticulo_Click);
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(224, 496);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(143, 28);
+            this.btnModificar.TabIndex = 14;
+            this.btnModificar.Text = "Modificar Artículo";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(407, 496);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(148, 29);
+            this.btnEliminar.TabIndex = 15;
+            this.btnEliminar.Text = "Eliminar Articulo";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            // 
             // frmListado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -224,10 +189,12 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(917, 537);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.btnArticulo);
             this.Controls.Add(this.btndetalle);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblopcion);
-            this.Controls.Add(this.gbopciones);
             this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.dgvArticulo);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -237,8 +204,6 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();
-            this.gbopciones.ResumeLayout(false);
-            this.gbopciones.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -250,12 +215,7 @@
 
         private System.Windows.Forms.DataGridView dgvArticulo;
         private System.Windows.Forms.PictureBox pbxArticulo;
-        private System.Windows.Forms.RadioButton rdbagregar;
-        private System.Windows.Forms.RadioButton rdbmodificar;
-        private System.Windows.Forms.RadioButton rdbeliminar;
-        private System.Windows.Forms.GroupBox gbopciones;
         private System.Windows.Forms.Label lblopcion;
-        private System.Windows.Forms.Button btnOpcion;
         private System.Windows.Forms.Button btobusqueda;
         private System.Windows.Forms.TextBox tbbusqueda;
         private System.Windows.Forms.ComboBox cbbusqueda;
@@ -264,6 +224,9 @@
         private System.Windows.Forms.Label lblcategorias;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label lblMarcas;
+        private System.Windows.Forms.Button btnArticulo;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }
 

@@ -29,7 +29,7 @@ namespace negocio
                 {
                     Articulo Articulo = new Articulo();
 
-                    Articulo.CodigoArticulo = (int)datos.Lector["Id"];
+                    Articulo.CodigoArticulo = (string)datos.Lector["Id"];
                     Articulo.Nombre = (string)datos.Lector["Nombre"];
                     Articulo.Descripcion = (string)datos.Lector["Descripcion"];
                     Articulo.UrlImagen = (string)datos.Lector["ImagenUrl"];
@@ -48,6 +48,21 @@ namespace negocio
             finally
             {
                 datos.cerrarConexion();
+            }
+        }
+    
+        public void cargar(Articulo nuevo)
+        {
+            AccesoDatos dato = new AccesoDatos();
+
+            try
+            {
+                dato.setearConsulta("Insert Into Articulos(Codigo,Nombre,Descripcion,IdMarca,IdCategoria,Precio)values ("nuevo.CodigoArticulo,nuevo.Nombre,nuevo.Descripcion,1,1,nuevo.UrlImagen)");
+
+            }
+            catch(Exception ex)
+            {
+                throw ex;
             }
         }
     }
