@@ -41,7 +41,7 @@
             this.btnListado.Font = new System.Drawing.Font("Wide Latin", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnListado.ForeColor = System.Drawing.Color.Transparent;
             this.btnListado.Location = new System.Drawing.Point(31, 376);
-            this.btnListado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnListado.Margin = new System.Windows.Forms.Padding(2);
             this.btnListado.Name = "btnListado";
             this.btnListado.Size = new System.Drawing.Size(235, 57);
             this.btnListado.TabIndex = 0;
@@ -58,7 +58,7 @@
             this.btnsalida.Font = new System.Drawing.Font("Wide Latin", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnsalida.ForeColor = System.Drawing.Color.Transparent;
             this.btnsalida.Location = new System.Drawing.Point(88, 481);
-            this.btnsalida.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnsalida.Margin = new System.Windows.Forms.Padding(2);
             this.btnsalida.Name = "btnsalida";
             this.btnsalida.Size = new System.Drawing.Size(178, 26);
             this.btnsalida.TabIndex = 1;
@@ -78,11 +78,11 @@
             this.Controls.Add(this.btnListado);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ForeColor = System.Drawing.Color.Red;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VentanaPrincipal";
-            this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.TransparencyKey = System.Drawing.Color.LavenderBlush;
             this.ResumeLayout(false);
 
         }

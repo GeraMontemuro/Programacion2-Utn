@@ -12,7 +12,7 @@ namespace negocio
 {
     public class ArticuloNegocio
     {
-       
+
         public List<Articulo> listar()
         {
             List<Articulo> lista = new List<Articulo>();
@@ -21,7 +21,7 @@ namespace negocio
             try
             {
 
-                datos.setearConsulta("SELECT Art.Id AS Id, Art.Nombre, Art.Descripcion, MIN(Ima.ImagenUrl) AS ImagenUrl FROM ARTICULOS Art INNER JOIN IMAGENES Ima ON Art.Id = Ima.IdArticulo GROUP BY Art.Id, Art.Nombre, Art.Descripcion");
+                datos.setearConsulta("SELECT Art.Id AS Id, Art.Codigo, Art.Nombre, Art.Descripcion, MIN(Ima.ImagenUrl) AS ImagenUrl FROM ARTICULOS Art INNER JOIN IMAGENES Ima ON Art.Id = Ima.IdArticulo GROUP BY Art.Id, Art.Codigo, Art.Nombre, Art.Descripcion");
 
                 datos.ejecutarLectura();
 
@@ -29,16 +29,16 @@ namespace negocio
                 {
                     Articulo Articulo = new Articulo();
 
-                    Articulo.CodigoArticulo = (string)datos.Lector["Id"];
+                    Articulo.CodigoArticulo = (string)datos.Lector["Codigo"];
                     Articulo.Nombre = (string)datos.Lector["Nombre"];
                     Articulo.Descripcion = (string)datos.Lector["Descripcion"];
                     Articulo.UrlImagen = (string)datos.Lector["ImagenUrl"];
 
                     lista.Add(Articulo);
                 }
-                
 
-            return lista;
+
+                return lista;
             }
             catch (Exception ex)
             {
@@ -50,19 +50,23 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
-    
+
         public void cargar(Articulo nuevo)
         {
             AccesoDatos dato = new AccesoDatos();
 
             try
             {
-                dato.setearConsulta("Insert Into Articulos(Codigo,Nombre,Descripcion,IdMarca,IdCategoria,Precio)values ("nuevo.CodigoArticulo,nuevo.Nombre,nuevo.Descripcion,1,1,nuevo.UrlImagen)");
-
+                dato.setearConsulta("Insert Into Articulos(Codigo,Nombre,Descripcion) values (" + nuevo.CodigoArticulo + ",'" + nuevo.Nombre + "','" + nuevo.Descripcion + "')");
+                dato.ejecutarAccion();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                dato.cerrarConexion();
             }
         }
     }

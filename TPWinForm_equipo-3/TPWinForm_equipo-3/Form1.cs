@@ -25,6 +25,7 @@ namespace TPWinForm_equipo_3
             ArticuloNegocio Art = new ArticuloNegocio();
             ListArticulo = Art.listar();
             dgvArticulo.DataSource = ListArticulo;
+            dgvArticulo.Columns["UrlImagen"].Visible = false;
             CambiarImagen(ListArticulo[0].UrlImagen);
         }
 

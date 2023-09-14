@@ -29,17 +29,13 @@ namespace TPWinForm_equipo_3
                 aux.CodigoArticulo = txtCodigo.Text;
                 aux.Nombre = txtNombre.Text;
                 aux.Descripcion = txtDescripcion.Text;
-                //aux.Marca= txt....
-                //aux.CAtegoria = txt...
-                //aux.UrlImagen = 
-                //aux.Precio = (float)txtPrecio.Text;
-
+                
                  auxnegocio.cargar(aux);
                 MessageBox.Show("Articulo agregado");
             }
             catch  (Exception ex)
             {
-                MessageBox.Show(ex.ToString())
+                MessageBox.Show(ex.ToString());
             }
 
 
