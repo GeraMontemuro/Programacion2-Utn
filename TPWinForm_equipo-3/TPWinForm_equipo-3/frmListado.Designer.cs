@@ -60,7 +60,7 @@
             // pbxArticulo
             // 
             this.pbxArticulo.Location = new System.Drawing.Point(458, 74);
-            this.pbxArticulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbxArticulo.Margin = new System.Windows.Forms.Padding(2);
             this.pbxArticulo.Name = "pbxArticulo";
             this.pbxArticulo.Size = new System.Drawing.Size(198, 233);
             this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -96,7 +96,7 @@
             // 
             this.cbbusqueda.FormattingEnabled = true;
             this.cbbusqueda.Location = new System.Drawing.Point(42, 76);
-            this.cbbusqueda.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbbusqueda.Margin = new System.Windows.Forms.Padding(2);
             this.cbbusqueda.Name = "cbbusqueda";
             this.cbbusqueda.Size = new System.Drawing.Size(119, 21);
             this.cbbusqueda.TabIndex = 10;
@@ -110,9 +110,9 @@
             this.groupBox1.Controls.Add(this.tbbusqueda);
             this.groupBox1.Controls.Add(this.btobusqueda);
             this.groupBox1.Location = new System.Drawing.Point(17, 18);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(427, 110);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
@@ -141,7 +141,7 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(200, 76);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(113, 21);
             this.comboBox1.TabIndex = 11;
@@ -149,7 +149,7 @@
             // btndetalle
             // 
             this.btndetalle.Location = new System.Drawing.Point(466, 312);
-            this.btndetalle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btndetalle.Margin = new System.Windows.Forms.Padding(2);
             this.btndetalle.Name = "btndetalle";
             this.btndetalle.Size = new System.Drawing.Size(170, 28);
             this.btndetalle.TabIndex = 12;
@@ -159,7 +159,7 @@
             // btnArticulo
             // 
             this.btnArticulo.Location = new System.Drawing.Point(18, 374);
-            this.btnArticulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnArticulo.Margin = new System.Windows.Forms.Padding(2);
             this.btnArticulo.Name = "btnArticulo";
             this.btnArticulo.Size = new System.Drawing.Size(94, 24);
             this.btnArticulo.TabIndex = 13;
@@ -170,7 +170,7 @@
             // btnModificar
             // 
             this.btnModificar.Location = new System.Drawing.Point(144, 375);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(107, 23);
             this.btnModificar.TabIndex = 14;
@@ -180,7 +180,7 @@
             // btnEliminar
             // 
             this.btnEliminar.Location = new System.Drawing.Point(288, 375);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(111, 24);
             this.btnEliminar.TabIndex = 15;

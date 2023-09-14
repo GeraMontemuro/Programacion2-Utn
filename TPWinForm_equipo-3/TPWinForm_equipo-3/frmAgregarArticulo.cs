@@ -30,7 +30,7 @@ namespace TPWinForm_equipo_3
                 aux.Nombre = txtNombre.Text;
                 aux.Descripcion = txtDescripcion.Text;
                 
-                 auxnegocio.cargar(aux);
+                auxnegocio.cargar(aux);
                 MessageBox.Show("Articulo agregado");
             }
             catch  (Exception ex)
@@ -39,6 +39,27 @@ namespace TPWinForm_equipo_3
             }
 
 
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close(); 
+        }
+
+        private void FrmAgregarArticulo_Load(object sender, EventArgs e)
+        {
+            CategoriaNegocio Cate = new CategoriaNegocio();
+            MarcaNegocio Marc = new MarcaNegocio();
+            try
+            {
+                cboCategoria.DataSource = Cate.listar(); 
+                cboMarca.DataSource = Marc.listar();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

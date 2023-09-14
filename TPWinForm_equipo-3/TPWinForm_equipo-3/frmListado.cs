@@ -52,6 +52,8 @@ namespace TPWinForm_equipo_3
            FrmAgregarArticulo ventana = new FrmAgregarArticulo();
             ventana.ShowDialog();
         }
+
+       
     }
 
 

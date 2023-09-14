@@ -7,11 +7,12 @@ using System.Data.SqlClient;
 using dominio;
 using System.Data;
 using System.Reflection;
+using System.Net;
 
 namespace negocio
 {
     public class ArticuloNegocio
-    {
+    {    
 
         public List<Articulo> listar()
         {
@@ -21,8 +22,9 @@ namespace negocio
             try
             {
 
-                datos.setearConsulta("SELECT Art.Id AS Id, Art.Codigo, Art.Nombre, Art.Descripcion, MIN(Ima.ImagenUrl) AS ImagenUrl FROM ARTICULOS Art INNER JOIN IMAGENES Ima ON Art.Id = Ima.IdArticulo GROUP BY Art.Id, Art.Codigo, Art.Nombre, Art.Descripcion");
-
+                datos.setearConsulta("SELECT Art.Id AS Id, Art.Codigo, Art.Nombre, Art.Descripcion, MIN(Ima.ImagenUrl) AS ImagenUrl,Mar.Descripcion AS 'Marca' ,Cat.Descripcion AS 'Categoria' FROM ARTICULOS Art \r\nINNER JOIN IMAGENES Ima ON Art.Id = Ima.IdArticulo" +
+                " \r\nLEFT JOIN MARCAS Mar ON Art.IdMarca=Mar.Id\r\nLEFT JOIN CATEGORIAS Cat ON Art.IdCategoria=Cat.Id\r\n" +
+                "GROUP BY Art.Id, Art.Codigo, Art.Nombre, Art.Descripcion,Mar.Descripcion,Cat.Descripcion");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -33,6 +35,14 @@ namespace negocio
                     Articulo.Nombre = (string)datos.Lector["Nombre"];
                     Articulo.Descripcion = (string)datos.Lector["Descripcion"];
                     Articulo.UrlImagen = (string)datos.Lector["ImagenUrl"];
+                    Articulo.Marca = new Marca();
+                    Articulo.Marca.Descripcion = (string)datos.Lector["Marca"];
+                    Articulo.Categoria = new Categoria();
+                    if (!(datos.Lector["Categoria"] is DBNull))///ver crear helper para todas los null
+                    {
+                        Articulo.Categoria.Descripcion = (string)datos.Lector["Categoria"];
+                    }
+                    else { Articulo.Categoria.Descripcion = "No tiene"; }
 
                     lista.Add(Articulo);
                 }
