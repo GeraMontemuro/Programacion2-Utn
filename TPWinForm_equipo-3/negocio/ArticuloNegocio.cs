@@ -57,7 +57,7 @@ namespace negocio
 
             try
             {
-                dato.setearConsulta("Insert Into Articulos(Codigo,Nombre,Descripcion) values (" + nuevo.CodigoArticulo + ",'" + nuevo.Nombre + "','" + nuevo.Descripcion + "')");
+                dato.setearConsulta("Insert Into Articulos(Codigo,Nombre,Descripcion) values ('" + nuevo.CodigoArticulo + "','" + nuevo.Nombre + "','" + nuevo.Descripcion + "')");
                 dato.ejecutarAccion();
             }
             catch (Exception ex)
