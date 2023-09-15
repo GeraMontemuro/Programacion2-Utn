@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Security.Permissions;
 using System.Text;
@@ -16,6 +17,7 @@ namespace dominio
         public string UrlImagen { get; set; }
         public Marca Marca { get; set; }
         public Categoria Categoria{ get; set; }
+        public SqlMoney Precio { get; set; }
 
 
         public Articulo()

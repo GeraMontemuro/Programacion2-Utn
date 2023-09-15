@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,10 @@ namespace TPWinForm_equipo_3
                 aux.CodigoArticulo = txtCodigo.Text;
                 aux.Nombre = txtNombre.Text;
                 aux.Descripcion = txtDescripcion.Text;
+                aux.Marca = (Marca)cboMarca.SelectedItem;
+                aux.Categoria = (Categoria)cboCategoria.SelectedItem;
+                aux.Precio = SqlMoney.Parse(txtPrecio.Text);
+
                 
                 auxnegocio.cargar(aux);
                 MessageBox.Show("Articulo agregado");
