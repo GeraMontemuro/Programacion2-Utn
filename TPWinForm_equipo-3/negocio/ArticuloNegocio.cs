@@ -29,6 +29,7 @@ namespace negocio
                 {
                     Articulo Articulo = new Articulo();
 
+                    Articulo.IDArticulo = (int)datos.Lector["Id"];
                     Articulo.CodigoArticulo = (string)datos.Lector["Codigo"];
                     Articulo.Nombre = (string)datos.Lector["Nombre"];
                     Articulo.Descripcion = (string)datos.Lector["Descripcion"];
@@ -65,6 +66,9 @@ namespace negocio
         public void cargar(Articulo nuevo)
         {
             AccesoDatos dato = new AccesoDatos();
+            ///AccesoDatos datoimagen = new AccesoDatos();
+           /// List<Articulo> pipi = new List<Articulo>();
+            Articulo ArticuloCargado = new Articulo();
 
             try
             {
@@ -72,6 +76,20 @@ namespace negocio
                 dato.setearParametro("@IdMarca", nuevo.Marca.Id);
                 dato.setearParametro("@IdCategoria", nuevo.Categoria.Id);
                 dato.ejecutarAccion();
+
+                /*pipi = listar();
+
+                foreach (Articulo item in pipi)
+                {
+                    ArticuloCargado.IDArticulo = item.IDArticulo;
+                    Console.WriteLine(ArticuloCargado.IDArticulo);
+                }
+
+                datoimagen.setearConsulta("insert into IMAGENES (IdArticulo,ImagenUrl)values("+ArticuloCargado.IDArticulo+",@ImagenUrl)");
+                datoimagen.setearParametro("@IdArticulo", ArticuloCargado.IDArticulo);
+                datoimagen.setearParametro("@ImagenUrl", nuevo.UrlImagen);
+                dato.ejecutarAccion();*/
+
             }
             catch (Exception ex)
             {
@@ -80,7 +98,9 @@ namespace negocio
             finally
             {
                 dato.cerrarConexion();
-            }
+               /// datoimagen.cerrarConexion();
+            }         
+
         }
     }
 }

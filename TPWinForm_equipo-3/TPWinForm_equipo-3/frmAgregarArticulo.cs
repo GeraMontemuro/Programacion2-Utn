@@ -32,6 +32,7 @@ namespace TPWinForm_equipo_3
                 aux.Descripcion = txtDescripcion.Text;
                 aux.Marca = (Marca)cboMarca.SelectedItem;
                 aux.Categoria = (Categoria)cboCategoria.SelectedItem;
+                aux.UrlImagen = txtUrlImagen.Text;
                 aux.Precio = SqlMoney.Parse(txtPrecio.Text);
 
                 

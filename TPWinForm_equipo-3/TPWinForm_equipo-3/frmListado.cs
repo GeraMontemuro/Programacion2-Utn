@@ -45,7 +45,7 @@ namespace TPWinForm_equipo_3
 
         private void btnArticulo_Click(object sender, EventArgs e)
         {
-           FrmAgregarArticulo ventana = new FrmAgregarArticulo();
+            FrmAgregarArticulo ventana = new FrmAgregarArticulo();
             ventana.ShowDialog();
             mostrar();
         }
