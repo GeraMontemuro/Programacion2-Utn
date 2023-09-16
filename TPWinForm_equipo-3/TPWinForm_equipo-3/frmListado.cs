@@ -58,7 +58,27 @@ namespace TPWinForm_equipo_3
             dgvArticulo.Columns["UrlImagen"].Visible = false;
             mostrarImagen(ListArticulo[0].UrlImagen);
         }
-       
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio artNegocio = new ArticuloNegocio();
+            Articulo seleccionado;
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("¿Seguro que desea eliminar el registro?", "Eliminado", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if(respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Articulo)dgvArticulo.CurrentRow.DataBoundItem;
+                    artNegocio.eliminar(seleccionado.IDArticulo);
+                    mostrar();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 
 

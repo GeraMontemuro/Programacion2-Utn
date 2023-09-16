@@ -37,7 +37,9 @@ namespace TPWinForm_equipo_3
 
                 
                 auxnegocio.cargar(aux);
-                MessageBox.Show("Articulo agregado");
+                MessageBox.Show("Artículo agregado");
+                Close();
+
             }
             catch  (Exception ex)
             {

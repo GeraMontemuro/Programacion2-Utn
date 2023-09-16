@@ -9,6 +9,7 @@ using System.Data;
 using System.Reflection;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
+using System.ComponentModel.Design;
 
 namespace negocio
 {
@@ -101,8 +102,30 @@ namespace negocio
             {
                 dato.cerrarConexion();
                 datoimagen.cerrarConexion();
+                
             }
           
         }
+
+        public void eliminar(int id)
+        {
+            try
+            {
+                AccesoDatos dato = new AccesoDatos();
+                AccesoDatos datoimagen = new AccesoDatos();
+                dato.setearConsulta("delete from articulos where id = @id");
+                dato.setearParametro("@id", id);
+                dato.ejecutarAccion();
+                datoimagen.setearConsulta("delete from imagenes where IdArticulo = @id");
+                datoimagen.setearParametro("@id", id);
+                datoimagen.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
+
 }

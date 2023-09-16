@@ -39,7 +39,7 @@
             this.lblcategorias = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btndetalle = new System.Windows.Forms.Button();
-            this.btnArticulo = new System.Windows.Forms.Button();
+            this.btnAgregarArticulo = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulo)).BeginInit();
@@ -156,16 +156,16 @@
             this.btndetalle.Text = "Listar Detalle";
             this.btndetalle.UseVisualStyleBackColor = true;
             // 
-            // btnArticulo
+            // btnAgregarArticulo
             // 
-            this.btnArticulo.Location = new System.Drawing.Point(18, 374);
-            this.btnArticulo.Margin = new System.Windows.Forms.Padding(2);
-            this.btnArticulo.Name = "btnArticulo";
-            this.btnArticulo.Size = new System.Drawing.Size(94, 24);
-            this.btnArticulo.TabIndex = 13;
-            this.btnArticulo.Text = "Agregar Artículo";
-            this.btnArticulo.UseVisualStyleBackColor = true;
-            this.btnArticulo.Click += new System.EventHandler(this.btnArticulo_Click);
+            this.btnAgregarArticulo.Location = new System.Drawing.Point(18, 374);
+            this.btnAgregarArticulo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregarArticulo.Name = "btnAgregarArticulo";
+            this.btnAgregarArticulo.Size = new System.Drawing.Size(94, 24);
+            this.btnAgregarArticulo.TabIndex = 13;
+            this.btnAgregarArticulo.Text = "Agregar Artículo";
+            this.btnAgregarArticulo.UseVisualStyleBackColor = true;
+            this.btnAgregarArticulo.Click += new System.EventHandler(this.btnArticulo_Click);
             // 
             // btnModificar
             // 
@@ -186,6 +186,7 @@
             this.btnEliminar.TabIndex = 15;
             this.btnEliminar.Text = "Eliminar Artículo";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // frmListado
             // 
@@ -196,7 +197,7 @@
             this.ClientSize = new System.Drawing.Size(688, 436);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
-            this.Controls.Add(this.btnArticulo);
+            this.Controls.Add(this.btnAgregarArticulo);
             this.Controls.Add(this.btndetalle);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblopcion);
@@ -228,7 +229,7 @@
         private System.Windows.Forms.Label lblcategorias;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label lblMarcas;
-        private System.Windows.Forms.Button btnArticulo;
+        private System.Windows.Forms.Button btnAgregarArticulo;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminar;
     }
