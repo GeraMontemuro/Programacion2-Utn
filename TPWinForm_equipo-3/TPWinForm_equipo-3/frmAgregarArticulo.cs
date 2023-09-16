@@ -15,31 +15,54 @@ namespace TPWinForm_equipo_3
 {
     public partial class FrmAgregarArticulo : Form
     {
+        private Articulo articulo = null;
         public FrmAgregarArticulo()
         {
             InitializeComponent();
         }
 
+        public FrmAgregarArticulo(Articulo Art)
+        {
+            InitializeComponent();
+            Text = "Modificar Articulo";
+            this.articulo = Art;
+        }
+
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            Articulo aux = new Articulo();
+   
             ArticuloNegocio auxnegocio = new ArticuloNegocio();
 
             try
             {
-                aux.CodigoArticulo = txtCodigo.Text;
-                aux.Nombre = txtNombre.Text;
-                aux.Descripcion = txtDescripcion.Text;
-                aux.Marca = (Marca)cboMarca.SelectedItem;
-                aux.Categoria = (Categoria)cboCategoria.SelectedItem;
-                aux.UrlImagen = txtUrlImagen.Text;
-                aux.Precio = SqlMoney.Parse(txtPrecio.Text);
+                if(articulo == null)
+                {
+                    articulo = new Articulo();
+                }
+                
+                articulo.Nombre = txtNombre.Text;
+                articulo.Descripcion = txtDescripcion.Text;
+                articulo.CodigoArticulo = txtCodigo.Text;
+                articulo.Marca = (Marca)cboMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+                articulo.UrlImagen = txtUrlImagen.Text;//se guarda en un objeto clase imagen
+                articulo.Precio = SqlMoney.Parse(txtPrecio.Text);
+
+                if(articulo.IDArticulo != 0)
+                {
+                    auxnegocio.Modificar(articulo);
+                    MessageBox.Show("Artículo modificado");
+                }
+                else
+                {
+                auxnegocio.cargar(articulo);
+                MessageBox.Show("Artículo agregado");
+
+                }
 
                 
-                auxnegocio.cargar(aux);
-                MessageBox.Show("Artículo agregado");
                 Close();
-
+                
             }
             catch  (Exception ex)
             {
@@ -60,8 +83,25 @@ namespace TPWinForm_equipo_3
             MarcaNegocio Marc = new MarcaNegocio();
             try
             {
-                cboCategoria.DataSource = Cate.listar(); 
+                cboCategoria.DataSource = Cate.listar();
+                cboCategoria.DisplayMember = "Descripcion";
+                cboCategoria.ValueMember = "Id";
                 cboMarca.DataSource = Marc.listar();
+                cboMarca.DisplayMember = "Descripcion";
+                cboMarca.ValueMember = "Id";
+
+
+                if (articulo != null)
+                {
+                    txtCodigo.Text = articulo.CodigoArticulo;
+                    txtNombre.Text = articulo.Nombre;
+                    txtDescripcion.Text = articulo.Descripcion;
+                    cboMarca.SelectedValue = articulo.Marca;
+                    cboCategoria.SelectedValue = articulo.Categoria;
+                    txtUrlImagen.Text = articulo.UrlImagen;
+                    cargarImagen(articulo.UrlImagen);
+                    txtPrecio.Text = articulo.Precio.ToString();
+                }
             }
             catch (Exception ex)
             {

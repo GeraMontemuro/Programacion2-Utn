@@ -15,5 +15,10 @@ namespace dominio
         {
             return Descripcion;
         }
+
+        public Marca()
+        {
+            Id = 1;
+        }
     }
 }

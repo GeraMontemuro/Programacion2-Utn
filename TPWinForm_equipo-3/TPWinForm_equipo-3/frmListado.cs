@@ -79,6 +79,17 @@ namespace TPWinForm_equipo_3
                 throw ex;
             }
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Articulo ArticuloSeleccionado;
+            ArticuloSeleccionado = (Articulo)dgvArticulo.CurrentRow.DataBoundItem;
+
+            FrmAgregarArticulo modificar = new FrmAgregarArticulo(ArticuloSeleccionado);
+            modificar.ShowDialog();
+            mostrar();
+            
+        }
     }
 
 
