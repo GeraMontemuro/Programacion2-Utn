@@ -8,6 +8,7 @@ using dominio;
 using System.Data;
 using System.Reflection;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
 
 namespace negocio
 {
@@ -66,9 +67,9 @@ namespace negocio
         public void cargar(Articulo nuevo)
         {
             AccesoDatos dato = new AccesoDatos();
-            ///AccesoDatos datoimagen = new AccesoDatos();
-           /// List<Articulo> pipi = new List<Articulo>();
-            Articulo ArticuloCargado = new Articulo();
+            AccesoDatos datoimagen = new AccesoDatos();
+            List<Articulo> listaArticuloAgregado = new List<Articulo>();
+            Imagen imagenCargada = new Imagen();
 
             try
             {
@@ -77,19 +78,20 @@ namespace negocio
                 dato.setearParametro("@IdCategoria", nuevo.Categoria.Id);
                 dato.ejecutarAccion();
 
-                /*pipi = listar();
-
-                foreach (Articulo item in pipi)
+                
+                listaArticuloAgregado = listar();
+           
+                foreach (Articulo item in listaArticuloAgregado)
                 {
-                    ArticuloCargado.IDArticulo = item.IDArticulo;
-                    Console.WriteLine(ArticuloCargado.IDArticulo);
+                    imagenCargada.IDArticulo = item.IDArticulo;
+                    Console.WriteLine("ARTICULO CARGADO: " + imagenCargada.IDArticulo);
                 }
 
-                datoimagen.setearConsulta("insert into IMAGENES (IdArticulo,ImagenUrl)values("+ArticuloCargado.IDArticulo+",@ImagenUrl)");
-                datoimagen.setearParametro("@IdArticulo", ArticuloCargado.IDArticulo);
+                datoimagen.setearConsulta("insert into IMAGENES (IdArticulo,ImagenUrl)values(@IdArticulo,@ImagenUrl)");
+                datoimagen.setearParametro("@IdArticulo", imagenCargada.IDArticulo);
                 datoimagen.setearParametro("@ImagenUrl", nuevo.UrlImagen);
-                dato.ejecutarAccion();*/
-
+                datoimagen.ejecutarAccion();
+                Console.WriteLine("Consulta SQL para la Imagen: " + imagenCargada.IDArticulo);
             }
             catch (Exception ex)
             {
@@ -98,9 +100,9 @@ namespace negocio
             finally
             {
                 dato.cerrarConexion();
-               /// datoimagen.cerrarConexion();
-            }         
-
+                datoimagen.cerrarConexion();
+            }
+          
         }
     }
 }
