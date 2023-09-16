@@ -21,11 +21,11 @@ namespace TPWinForm_equipo_3
             InitializeComponent();
         }
 
-        public FrmAgregarArticulo(Articulo Art)
+        public FrmAgregarArticulo(Articulo articulo)
         {
             InitializeComponent();
+            this.articulo = articulo;
             Text = "Modificar Articulo";
-            this.articulo = Art;
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
@@ -36,9 +36,8 @@ namespace TPWinForm_equipo_3
             try
             {
                 if(articulo == null)
-                {
                     articulo = new Articulo();
-                }
+
                 
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
@@ -84,11 +83,11 @@ namespace TPWinForm_equipo_3
             try
             {
                 cboCategoria.DataSource = Cate.listar();
-                cboCategoria.DisplayMember = "Descripcion";
                 cboCategoria.ValueMember = "Id";
+                cboCategoria.DisplayMember = "Descripcion";
                 cboMarca.DataSource = Marc.listar();
-                cboMarca.DisplayMember = "Descripcion";
                 cboMarca.ValueMember = "Id";
+                cboMarca.DisplayMember = "Descripcion";
 
 
                 if (articulo != null)
@@ -96,8 +95,8 @@ namespace TPWinForm_equipo_3
                     txtCodigo.Text = articulo.CodigoArticulo;
                     txtNombre.Text = articulo.Nombre;
                     txtDescripcion.Text = articulo.Descripcion;
-                    cboMarca.SelectedValue = articulo.Marca;
-                    cboCategoria.SelectedValue = articulo.Categoria;
+                    cboMarca.SelectedValue = articulo.Marca.Id;
+                    cboCategoria.SelectedValue = articulo.Categoria.Id;
                     txtUrlImagen.Text = articulo.UrlImagen;
                     cargarImagen(articulo.UrlImagen);
                     txtPrecio.Text = articulo.Precio.ToString();

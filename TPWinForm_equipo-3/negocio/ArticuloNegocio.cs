@@ -24,7 +24,7 @@ namespace negocio
             try
             {
 
-                datos.setearConsulta("SELECT Art.Id AS Id, Art.Codigo, Art.Nombre, Art.Descripcion, MIN(Ima.ImagenUrl) AS ImagenUrl,Mar.Id,Mar.Descripcion AS 'Marca' ,Cat.Id,Cat.Descripcion AS 'Categoria'  FROM ARTICULOS Art \r\nLEFT JOIN IMAGENES Ima ON Art.Id = Ima.IdArticulo\r\nLEFT JOIN MARCAS Mar ON Art.IdMarca=Mar.Id\r\nLEFT JOIN CATEGORIAS Cat ON Art.IdCategoria=Cat.Id\r\nGROUP BY Art.Id, Art.Codigo, Art.Nombre, Art.Descripcion,Mar.Descripcion, Mar.Id,Cat.Descripcion, Cat.Id");
+                datos.setearConsulta("SELECT Art.Id AS Id, Art.Codigo, Art.Nombre, Art.Descripcion, MIN(Ima.ImagenUrl) AS ImagenUrl,Mar.Id as 'IdMarca',Mar.Descripcion AS 'Marca' ,Cat.Id as 'IdCategoria',Cat.Descripcion AS 'Categoria'  \r\nFROM ARTICULOS Art \r\nLEFT JOIN IMAGENES Ima ON Art.Id = Ima.IdArticulo\r\nLEFT JOIN MARCAS Mar ON Art.IdMarca=Mar.Id\r\nLEFT JOIN CATEGORIAS Cat ON Art.IdCategoria=Cat.Id\r\nGROUP BY Art.Id, Art.Codigo, Art.Nombre,Art.Descripcion,Mar.Descripcion, Mar.Id,Cat.Descripcion, Cat.Id");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -41,11 +41,11 @@ namespace negocio
                     }
                     Articulo.Marca = new Marca();
                     Articulo.Marca.Id = (int)datos.Lector["Id"];
-                   /* if (!(datos.Lector["Marca"] is DBNull))///ver crear helper para todas los null
+                    if (!(datos.Lector["Marca"] is DBNull))///ver crear helper para todas los null
                     {
                         Articulo.Marca.Descripcion = (string)datos.Lector["Marca"];
                     }
-                    else { Articulo.Marca.Descripcion = "No tiene"; }*/
+                    else { Articulo.Marca.Descripcion = "No tiene"; }
                     Articulo.Marca.Descripcion = (string)datos.Lector["Marca"];
                     Articulo.Categoria = new Categoria();
                     Articulo.Categoria.Id = (int)datos.Lector["Id"];
@@ -118,7 +118,7 @@ namespace negocio
             AccesoDatos DatosModificados = new AccesoDatos();
             try
             {
-                DatosModificados.setearConsulta("UPDATE Articulos set Codigo = @Codigo, Nombre=@Nombre, Descripcion = @Descripcion, IdMarca = @IdMarca, IdCategoria = @IdCategoria, Precio = @Precio  where Id = @Id");
+                DatosModificados.setearConsulta("UPDATE Articulos set Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion, IdMarca = @IdMarca, IdCategoria = @IdCategoria, Precio = @Precio  where Id = @Id");
                 DatosModificados.setearParametro("@Codigo",modi.CodigoArticulo);
                 DatosModificados.setearParametro("@Nombre",modi.Nombre);
                 DatosModificados.setearParametro("@Descripcion",modi.Descripcion);

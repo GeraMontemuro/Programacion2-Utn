@@ -56,6 +56,7 @@ namespace TPWinForm_equipo_3
             ListArticulo = Art.listar();
             dgvArticulo.DataSource = ListArticulo;
             dgvArticulo.Columns["UrlImagen"].Visible = false;
+            dgvArticulo.Columns["IdArticulo"].Visible = false;
             mostrarImagen(ListArticulo[0].UrlImagen);
         }
 
