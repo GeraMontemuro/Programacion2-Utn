@@ -66,5 +66,22 @@ namespace TPWinForm_equipo_3
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(txtUrlImagen.Text);
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pbxAgregarImagen.Load(imagen);
+            }
+            catch (Exception)
+            {
+                pbxAgregarImagen.Load("https://production.listennotes.com/podcasts/el-podcast-m%C3%A1s-random-del-mundo-L6I3Ep9lRTB-xB_PCg0EDch.1400x1400.jpg");
+            }
+        }
     }
 }

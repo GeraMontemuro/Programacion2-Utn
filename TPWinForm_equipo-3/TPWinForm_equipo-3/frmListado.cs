@@ -28,10 +28,10 @@ namespace TPWinForm_equipo_3
         private void dgvArticulo_SelectionChanged(object sender, EventArgs e)
         {
             Articulo aux = (Articulo)dgvArticulo.CurrentRow.DataBoundItem;
-            CambiarImagen(aux.UrlImagen);
+            mostrarImagen(aux.UrlImagen);
         }
 
-        private void CambiarImagen(string imagen)
+        private void mostrarImagen(string imagen)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace TPWinForm_equipo_3
             ListArticulo = Art.listar();
             dgvArticulo.DataSource = ListArticulo;
             dgvArticulo.Columns["UrlImagen"].Visible = false;
-            CambiarImagen(ListArticulo[0].UrlImagen);
+            mostrarImagen(ListArticulo[0].UrlImagen);
         }
        
     }
