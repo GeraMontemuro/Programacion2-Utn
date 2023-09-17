@@ -119,7 +119,7 @@ namespace TPWinForm_equipo_3
 
         private void btnFiltro_Click(object sender, EventArgs e)
         {
-            try
+          /*  try
             {
             string FiltroCate = cbbCategoria.SelectedItem.ToString();
             string FiltroMarc = cbbMarca.SelectedItem.ToString();
@@ -130,7 +130,7 @@ namespace TPWinForm_equipo_3
             catch (Exception ex)
             {
                 throw ex;
-            }
+            }*/
         }
     }
 

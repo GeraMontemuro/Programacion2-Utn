@@ -164,7 +164,7 @@ namespace negocio
                 throw ex;
             }
         }
-        public void Busqueda(string FiltroCate, string FiltroMarc, string FiltroBusqueda)
+       /* public void Busqueda(string FiltroCate, string FiltroMarc, string FiltroBusqueda)
         {
             List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
@@ -180,7 +180,7 @@ namespace negocio
                 throw ex;
             }
 
-        }
+        }*/
     }
 
 }
