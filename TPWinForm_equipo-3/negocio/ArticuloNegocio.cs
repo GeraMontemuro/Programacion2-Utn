@@ -113,9 +113,10 @@ namespace negocio
             }
           
         }
-        public void Modificar(Articulo modi)
+        public void Modificar(Articulo modi, Imagen ima)
         {
             AccesoDatos DatosModificados = new AccesoDatos();
+            AccesoDatos DatosModificadosImagen = new AccesoDatos();
            
             try
             {
@@ -129,6 +130,10 @@ namespace negocio
                 DatosModificados.setearParametro("@Id", modi.IDArticulo);
                 DatosModificados.ejecutarAccion();
 
+                DatosModificadosImagen.setearConsulta("update Imagenes set IdArticulo=@id, ImagenUrl=@UrlImagen");
+                DatosModificadosImagen.setearParametro("@id", modi.IDArticulo);
+                DatosModificadosImagen.setearParametro("@UrlImagen", ima.ImagenUrl);
+                DatosModificadosImagen.ejecutarAccion();
             }
             catch (Exception ex)
             {
@@ -137,6 +142,7 @@ namespace negocio
             finally
             {
                 DatosModificados.cerrarConexion();
+                DatosModificadosImagen.cerrarConexion();
             }
         }
         public void eliminar(int id)

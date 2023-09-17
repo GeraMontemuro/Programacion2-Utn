@@ -32,6 +32,7 @@ namespace TPWinForm_equipo_3
         {
    
             ArticuloNegocio auxnegocio = new ArticuloNegocio();
+            Imagen ImagenCargada = new Imagen();
 
             try
             {
@@ -44,12 +45,12 @@ namespace TPWinForm_equipo_3
                 articulo.CodigoArticulo = txtCodigo.Text;
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
-                articulo.UrlImagen = txtUrlImagen.Text;//se guarda en un objeto clase imagen
+                ImagenCargada.ImagenUrl = txtUrlImagen.Text;
                 articulo.Precio = float.Parse(txtPrecio.Text);
 
                 if(articulo.IDArticulo != 0)
                 {
-                    auxnegocio.Modificar(articulo);
+                    auxnegocio.Modificar(articulo,ImagenCargada);
                     MessageBox.Show("Artículo modificado");
                 }
                 else
