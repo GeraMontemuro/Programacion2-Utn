@@ -17,8 +17,18 @@ namespace TPWinForm_equipo_3
         private void Form1_Load(object sender, EventArgs e)
         {
             mostrar();
-            //cbbFiltroCategoria.Items.
-            //cbbFiltroMArca.Items.
+
+            CategoriaNegocio cate = new CategoriaNegocio();
+            MarcaNegocio marc = new MarcaNegocio();
+
+            cbbFiltroCategoria.DataSource = cate.listar();
+            cbbFiltroCategoria.ValueMember = "Id";
+            cbbFiltroCategoria.DisplayMember = "Descripcion";
+
+            cbbFiltroMarca.DataSource = marc.listar();
+            cbbFiltroMarca.ValueMember = "Id";
+            cbbFiltroMarca.DisplayMember = "Descripcion";
+
         }
 
         private void dgvArticulo_SelectionChanged(object sender, EventArgs e)
@@ -119,19 +129,21 @@ namespace TPWinForm_equipo_3
 
         private void btnFiltro_Click(object sender, EventArgs e)
         {
-          /*  try
-            {
-            string FiltroCate = cbbCategoria.SelectedItem.ToString();
-            string FiltroMarc = cbbMarca.SelectedItem.ToString();
-            string FiltroBusqueda = txtBusqueda.Text;
-                dgvArticulo.DataSource = ArticuloNegocio.Busqueda(FiltroCate,FiltroMarc,FiltroBusqueda);
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }*/
+            List<Articulo> listaFiltrada;
+            string filtro = txtBusqueda.Text;
+            try
+              {
+                string filtroMarca = cbbFiltroMarca.SelectedValue.ToString();
+                string filtroCategoria = cbbFiltroCategoria.SelectedValue.ToString();
+                
+              }
+              catch (Exception ex)
+              {
+                  throw ex;
+              }
         }
+
+      
     }
 
 

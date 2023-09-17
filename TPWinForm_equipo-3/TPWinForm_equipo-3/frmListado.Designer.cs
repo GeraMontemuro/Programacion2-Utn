@@ -41,8 +41,8 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnFiltro = new System.Windows.Forms.Button();
-            this.cbbCategoria = new System.Windows.Forms.ComboBox();
-            this.cbbMarca = new System.Windows.Forms.ComboBox();
+            this.cbbFiltroCategoria = new System.Windows.Forms.ComboBox();
+            this.cbbFiltroMarca = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
@@ -172,21 +172,22 @@
             this.btnFiltro.UseVisualStyleBackColor = true;
             this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);
             // 
-            // cbbCategoria
+            // cbbFiltroCategoria
             // 
-            this.cbbCategoria.FormattingEnabled = true;
-            this.cbbCategoria.Location = new System.Drawing.Point(91, 97);
-            this.cbbCategoria.Name = "cbbCategoria";
-            this.cbbCategoria.Size = new System.Drawing.Size(121, 24);
-            this.cbbCategoria.TabIndex = 17;
+            this.cbbFiltroCategoria.FormattingEnabled = true;
+            this.cbbFiltroCategoria.Location = new System.Drawing.Point(91, 97);
+            this.cbbFiltroCategoria.Name = "cbbFiltroCategoria";
+            this.cbbFiltroCategoria.Size = new System.Drawing.Size(121, 24);
+            this.cbbFiltroCategoria.TabIndex = 17;
+           
             // 
-            // cbbMarca
+            // cbbFiltroMarca
             // 
-            this.cbbMarca.FormattingEnabled = true;
-            this.cbbMarca.Location = new System.Drawing.Point(287, 97);
-            this.cbbMarca.Name = "cbbMarca";
-            this.cbbMarca.Size = new System.Drawing.Size(121, 24);
-            this.cbbMarca.TabIndex = 18;
+            this.cbbFiltroMarca.FormattingEnabled = true;
+            this.cbbFiltroMarca.Location = new System.Drawing.Point(287, 97);
+            this.cbbFiltroMarca.Name = "cbbFiltroMarca";
+            this.cbbFiltroMarca.Size = new System.Drawing.Size(121, 24);
+            this.cbbFiltroMarca.TabIndex = 18;
             // 
             // frmListado
             // 
@@ -196,8 +197,8 @@
             this.BackColor = System.Drawing.Color.RosyBrown;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1047, 507);
-            this.Controls.Add(this.cbbMarca);
-            this.Controls.Add(this.cbbCategoria);
+            this.Controls.Add(this.cbbFiltroMarca);
+            this.Controls.Add(this.cbbFiltroCategoria);
             this.Controls.Add(this.btnFiltro);
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.lblMarcas);
@@ -237,8 +238,8 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnFiltro;
-        private System.Windows.Forms.ComboBox cbbCategoria;
-        private System.Windows.Forms.ComboBox cbbMarca;
+        private System.Windows.Forms.ComboBox cbbFiltroCategoria;
+        private System.Windows.Forms.ComboBox cbbFiltroMarca;
     }
 }
 
