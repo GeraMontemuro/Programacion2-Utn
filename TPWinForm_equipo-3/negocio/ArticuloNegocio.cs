@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.ComponentModel.Design;
+using System.Collections;
 
 namespace negocio
 {
@@ -164,23 +165,59 @@ namespace negocio
                 throw ex;
             }
         }
-       /* public void Busqueda(string FiltroCate, string FiltroMarc, string FiltroBusqueda)
+       public List<Articulo> Busqueda(string filtroMarca, string filtroCategoria)
         {
-            List<Articulo> lista = new List<Articulo>();
+            List<Articulo> auxlist = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
+
+
             try
             {
+                string Consulta = "SELECT Art.Id AS Id, Art.Codigo, Art.Nombre, Art.Descripcion, MIN(Ima.ImagenUrl) AS ImagenUrl,Art.IdMarca ,Mar.Descripcion AS 'Marca', \r\nArt.IdCategoria,Cat.Descripcion AS 'Categoria'FROM ARTICULOS Art \r\nLEFT JOIN IMAGENES Ima ON Art.Id = Ima.IdArticulo\r\nLEFT JOIN MARCAS Mar ON Art.IdMarca=Mar.Id\r\nLEFT JOIN CATEGORIAS Cat ON Art.IdCategoria=Cat.Id\r\nGROUP BY Art.Id, Art.Codigo, Art.Nombre,Art.Descripcion,Mar.Descripcion,Art.IdMarca ,Cat.Descripcion, Art.IdCategoria HAVING";
+                Consulta += " Cat.Descripcion = '" + filtroCategoria + "' AND Mar.Descripcion ='" + filtroMarca + "' ";
 
-                string consulta = "";
-                
-                return lista;
+                datos.setearConsulta(Consulta);
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Articulo Articulo = new Articulo();
+                    Articulo.IDArticulo = (int)datos.Lector["Id"];
+                    Articulo.CodigoArticulo = (string)datos.Lector["Codigo"];
+                    Articulo.Nombre = (string)datos.Lector["Nombre"];
+                    Articulo.Descripcion = (string)datos.Lector["Descripcion"];
+                    if (!(datos.Lector["ImagenUrl"] is DBNull))///ver crear helper para todas los null
+                    {
+                        Articulo.UrlImagen = (string)datos.Lector["ImagenUrl"];
+                    }
+
+                    Articulo.Marca = new Marca();
+                    Articulo.Marca.Id = (int)datos.Lector["IdMarca"];
+                    if (!(datos.Lector["Marca"] is DBNull))///ver crear helper para todas los null
+                    {
+                        Articulo.Marca.Descripcion = (string)datos.Lector["Marca"];
+                    }
+                    else { Articulo.Marca.Descripcion = "No tiene"; }
+
+                    Articulo.Categoria = new Categoria();
+                    Articulo.Categoria.Id = (int)datos.Lector["IdCategoria"];
+                    if (!(datos.Lector["Categoria"] is DBNull))///ver crear helper para todas los null
+                    {
+                        Articulo.Categoria.Descripcion = (string)datos.Lector["Categoria"];
+                    }
+                    else { Articulo.Categoria.Descripcion = "No tiene"; }
+
+                    auxlist.Add(Articulo);
+
+                }
+
+                 return auxlist;
             }
             catch(Exception ex)
             {
                 throw ex;
             }
 
-        }*/
+        }
     }
 
 }

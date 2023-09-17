@@ -129,12 +129,15 @@ namespace TPWinForm_equipo_3
 
         private void btnFiltro_Click(object sender, EventArgs e)
         {
-            List<Articulo> listaFiltrada;
-            string filtro = txtBusqueda.Text;
+           
+            ArticuloNegocio articulofiltrado = new ArticuloNegocio();
             try
               {
-                string filtroMarca = cbbFiltroMarca.SelectedValue.ToString();
-                string filtroCategoria = cbbFiltroCategoria.SelectedValue.ToString();
+                string filtroMarca = cbbFiltroMarca.SelectedItem.ToString();
+                string filtroCategoria = cbbFiltroCategoria.SelectedItem.ToString();
+                dgvArticulo.DataSource = null;
+                dgvArticulo.DataSource=articulofiltrado.Busqueda(filtroMarca, filtroCategoria);
+                ocultarColumnas();
                 
               }
               catch (Exception ex)
