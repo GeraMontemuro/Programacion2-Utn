@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using dominio;
 using negocio;
-using dominio;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace TPWinForm_equipo_3
 {
@@ -23,6 +17,8 @@ namespace TPWinForm_equipo_3
         private void Form1_Load(object sender, EventArgs e)
         {
             mostrar();
+            //cbbFiltroCategoria.Items.
+            //cbbFiltroMArca.Items.
         }
 
         private void dgvArticulo_SelectionChanged(object sender, EventArgs e)
@@ -79,7 +75,7 @@ namespace TPWinForm_equipo_3
                 if(respuesta == DialogResult.Yes)
                 {
                     seleccionado = (Articulo)dgvArticulo.CurrentRow.DataBoundItem;
-                    artNegocio.eliminar(seleccionado.IDArticulo);
+                    artNegocio.Eliminar(seleccionado.IDArticulo);
                     mostrar();
                 }
             }
@@ -108,7 +104,7 @@ namespace TPWinForm_equipo_3
 
             if(filtro != "")
             {
-                listaFiltrada = ListArticulo.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Marca.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.Categoria.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+                listaFiltrada = ListArticulo.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Marca.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.Categoria.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.Marca.Descripcion.ToUpper().Contains(filtro.ToUpper()));
             }
             else
             {
@@ -119,6 +115,22 @@ namespace TPWinForm_equipo_3
             dgvArticulo.DataSource = null;
             dgvArticulo.DataSource = listaFiltrada;
             ocultarColumnas();
+        }
+
+        private void btnFiltro_Click(object sender, EventArgs e)
+        {
+            try
+            {
+            string FiltroCate = cbbCategoria.SelectedItem.ToString();
+            string FiltroMarc = cbbMarca.SelectedItem.ToString();
+            string FiltroBusqueda = txtBusqueda.Text;
+                dgvArticulo.DataSource = ArticuloNegocio.Busqueda(FiltroCate,FiltroMarc,FiltroBusqueda);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 
