@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListado));
             this.dgvArticulo = new System.Windows.Forms.DataGridView();
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
             this.lblopcion = new System.Windows.Forms.Label();
-            this.btobusqueda = new System.Windows.Forms.Button();
-            this.tbbusqueda = new System.Windows.Forms.TextBox();
+            this.btnBusqueda = new System.Windows.Forms.Button();
+            this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.cbbusqueda = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblMarcas = new System.Windows.Forms.Label();
@@ -51,12 +52,12 @@
             // 
             this.dgvArticulo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulo.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvArticulo.Location = new System.Drawing.Point(18, 133);
+            this.dgvArticulo.Location = new System.Drawing.Point(18, 112);
             this.dgvArticulo.MultiSelect = false;
             this.dgvArticulo.Name = "dgvArticulo";
             this.dgvArticulo.RowHeadersWidth = 51;
             this.dgvArticulo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulo.Size = new System.Drawing.Size(485, 192);
+            this.dgvArticulo.Size = new System.Drawing.Size(485, 213);
             this.dgvArticulo.TabIndex = 0;
             this.dgvArticulo.SelectionChanged += new System.EventHandler(this.dgvArticulo_SelectionChanged);
             // 
@@ -79,26 +80,28 @@
             this.lblopcion.TabIndex = 6;
             this.lblopcion.Text = "Elija una opción";
             // 
-            // btobusqueda
+            // btnBusqueda
             // 
-            this.btobusqueda.Location = new System.Drawing.Point(310, 24);
-            this.btobusqueda.Name = "btobusqueda";
-            this.btobusqueda.Size = new System.Drawing.Size(111, 30);
-            this.btobusqueda.TabIndex = 8;
-            this.btobusqueda.Text = "Buscar";
-            this.btobusqueda.UseVisualStyleBackColor = true;
+            this.btnBusqueda.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBusqueda.BackgroundImage")));
+            this.btnBusqueda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBusqueda.Location = new System.Drawing.Point(374, 18);
+            this.btnBusqueda.Name = "btnBusqueda";
+            this.btnBusqueda.Size = new System.Drawing.Size(33, 30);
+            this.btnBusqueda.TabIndex = 8;
+            this.btnBusqueda.UseVisualStyleBackColor = true;
+            this.btnBusqueda.Click += new System.EventHandler(this.btnBusqueda_Click);
             // 
-            // tbbusqueda
+            // txtBusqueda
             // 
-            this.tbbusqueda.Location = new System.Drawing.Point(12, 24);
-            this.tbbusqueda.Name = "tbbusqueda";
-            this.tbbusqueda.Size = new System.Drawing.Size(274, 20);
-            this.tbbusqueda.TabIndex = 9;
+            this.txtBusqueda.Location = new System.Drawing.Point(12, 24);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(344, 20);
+            this.txtBusqueda.TabIndex = 9;
             // 
             // cbbusqueda
             // 
             this.cbbusqueda.FormattingEnabled = true;
-            this.cbbusqueda.Location = new System.Drawing.Point(42, 76);
+            this.cbbusqueda.Location = new System.Drawing.Point(42, 62);
             this.cbbusqueda.Margin = new System.Windows.Forms.Padding(2);
             this.cbbusqueda.Name = "cbbusqueda";
             this.cbbusqueda.Size = new System.Drawing.Size(119, 21);
@@ -110,20 +113,20 @@
             this.groupBox1.Controls.Add(this.lblcategorias);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.cbbusqueda);
-            this.groupBox1.Controls.Add(this.tbbusqueda);
-            this.groupBox1.Controls.Add(this.btobusqueda);
-            this.groupBox1.Location = new System.Drawing.Point(17, 18);
+            this.groupBox1.Controls.Add(this.txtBusqueda);
+            this.groupBox1.Controls.Add(this.btnBusqueda);
+            this.groupBox1.Location = new System.Drawing.Point(18, 11);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(427, 110);
+            this.groupBox1.Size = new System.Drawing.Size(427, 96);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             // 
             // lblMarcas
             // 
             this.lblMarcas.AutoSize = true;
-            this.lblMarcas.Location = new System.Drawing.Point(219, 57);
+            this.lblMarcas.Location = new System.Drawing.Point(192, 47);
             this.lblMarcas.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMarcas.Name = "lblMarcas";
             this.lblMarcas.Size = new System.Drawing.Size(42, 13);
@@ -133,17 +136,17 @@
             // lblcategorias
             // 
             this.lblcategorias.AutoSize = true;
-            this.lblcategorias.Location = new System.Drawing.Point(40, 58);
+            this.lblcategorias.Location = new System.Drawing.Point(39, 47);
             this.lblcategorias.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblcategorias.Name = "lblcategorias";
-            this.lblcategorias.Size = new System.Drawing.Size(57, 13);
+            this.lblcategorias.Size = new System.Drawing.Size(59, 13);
             this.lblcategorias.TabIndex = 12;
-            this.lblcategorias.Text = "Categorias";
+            this.lblcategorias.Text = "Categorías";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(200, 76);
+            this.comboBox1.Location = new System.Drawing.Point(195, 62);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(113, 21);
@@ -198,7 +201,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.RosyBrown;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(785, 412);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
@@ -226,8 +229,8 @@
         private System.Windows.Forms.DataGridView dgvArticulo;
         private System.Windows.Forms.PictureBox pbxArticulo;
         private System.Windows.Forms.Label lblopcion;
-        private System.Windows.Forms.Button btobusqueda;
-        private System.Windows.Forms.TextBox tbbusqueda;
+        private System.Windows.Forms.Button btnBusqueda;
+        private System.Windows.Forms.TextBox txtBusqueda;
         private System.Windows.Forms.ComboBox cbbusqueda;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btndetalle;

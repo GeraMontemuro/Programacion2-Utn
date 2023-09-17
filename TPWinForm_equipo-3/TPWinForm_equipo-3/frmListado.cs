@@ -27,8 +27,11 @@ namespace TPWinForm_equipo_3
 
         private void dgvArticulo_SelectionChanged(object sender, EventArgs e)
         {
-            Articulo aux = (Articulo)dgvArticulo.CurrentRow.DataBoundItem;
-            mostrarImagen(aux.UrlImagen);
+            if(dgvArticulo.CurrentRow != null)
+            {
+                Articulo aux = (Articulo)dgvArticulo.CurrentRow.DataBoundItem;
+                mostrarImagen(aux.UrlImagen);
+            }
         }
 
         private void mostrarImagen(string imagen)
@@ -55,9 +58,15 @@ namespace TPWinForm_equipo_3
             ArticuloNegocio Art = new ArticuloNegocio();
             ListArticulo = Art.listar();
             dgvArticulo.DataSource = ListArticulo;
+            ocultarColumnas();
+            mostrarImagen(ListArticulo[0].UrlImagen);
+        }
+
+        private void ocultarColumnas()
+        {
             dgvArticulo.Columns["UrlImagen"].Visible = false;
             dgvArticulo.Columns["IdArticulo"].Visible = false;
-            mostrarImagen(ListArticulo[0].UrlImagen);
+
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -90,6 +99,26 @@ namespace TPWinForm_equipo_3
             modificar.ShowDialog();
             mostrar();
             
+        }
+
+        private void btnBusqueda_Click(object sender, EventArgs e)
+        {
+            List<Articulo> listaFiltrada;
+            string filtro = txtBusqueda.Text;
+
+            if(filtro != "")
+            {
+                listaFiltrada = ListArticulo.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Marca.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.Categoria.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+            }
+            else
+            {
+                listaFiltrada = ListArticulo;
+            }
+
+
+            dgvArticulo.DataSource = null;
+            dgvArticulo.DataSource = listaFiltrada;
+            ocultarColumnas();
         }
     }
 
