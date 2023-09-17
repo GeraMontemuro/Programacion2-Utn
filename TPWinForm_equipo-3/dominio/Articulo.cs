@@ -23,12 +23,12 @@ namespace dominio
         public Marca Marca { get; set; }
         [DisplayName("Categoría")]
         public Categoria Categoria{ get; set; }
-        public float Precio { get; set; }
+        public Decimal Precio { get; set; }
 
 
         public Articulo()
         {
-            UrlImagen = "https://production.listennotes.com/podcasts/el-podcast-m%C3%A1s-random-del-mundo-L6I3Ep9lRTB-xB_PCg0EDch.1400x1400.jpg";
+            //UrlImagen = "https://production.listennotes.com/podcasts/el-podcast-m%C3%A1s-random-del-mundo-L6I3Ep9lRTB-xB_PCg0EDch.1400x1400.jpg";
         }
     }
 

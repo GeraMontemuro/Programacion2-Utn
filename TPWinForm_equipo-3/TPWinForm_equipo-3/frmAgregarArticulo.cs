@@ -45,10 +45,11 @@ namespace TPWinForm_equipo_3
                 articulo.CodigoArticulo = txtCodigo.Text;
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
-                ImagenCargada.ImagenUrl = txtUrlImagen.Text;
-                articulo.Precio = float.Parse(txtPrecio.Text);
+                articulo.UrlImagen = txtUrlImagen.Text;
+                articulo.Precio = decimal.Parse(txtPrecio.Text);
+                ImagenCargada.ImagenUrl= txtUrlImagen.Text;
 
-                if(articulo.IDArticulo != 0)
+                if (articulo.IDArticulo != 0)
                 {
                     auxnegocio.Modificar(articulo,ImagenCargada);
                     MessageBox.Show("Artículo modificado");

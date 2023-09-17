@@ -11,6 +11,7 @@ using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.ComponentModel.Design;
 using System.Collections;
+using System.Data.SqlTypes;
 
 namespace negocio
 {
@@ -25,7 +26,7 @@ namespace negocio
             try
             {
 
-                datos.setearConsulta("SELECT Art.Id AS Id, Art.Codigo, Art.Nombre, Art.Descripcion, MIN(Ima.ImagenUrl) AS ImagenUrl,Art.IdMarca ,Mar.Descripcion AS 'Marca', \r\nArt.IdCategoria,Cat.Descripcion AS 'Categoria'FROM ARTICULOS Art \r\nLEFT JOIN IMAGENES Ima ON Art.Id = Ima.IdArticulo\r\nLEFT JOIN MARCAS Mar ON Art.IdMarca=Mar.Id\r\nLEFT JOIN CATEGORIAS Cat ON Art.IdCategoria=Cat.Id\r\nGROUP BY Art.Id, Art.Codigo, Art.Nombre,Art.Descripcion,Mar.Descripcion,Art.IdMarca ,Cat.Descripcion, Art.IdCategoria");
+                datos.setearConsulta("SELECT Art.Id AS Id, Art.Codigo, Art.Nombre, Art.Descripcion,Art.Precio, MIN(Ima.ImagenUrl) AS ImagenUrl,Art.IdMarca ,Mar.Descripcion AS 'Marca', \r\nArt.IdCategoria,Cat.Descripcion AS 'Categoria'FROM ARTICULOS Art \r\nLEFT JOIN IMAGENES Ima ON Art.Id = Ima.IdArticulo\r\nLEFT JOIN MARCAS Mar ON Art.IdMarca=Mar.Id\r\nLEFT JOIN CATEGORIAS Cat ON Art.IdCategoria=Cat.Id\r\nGROUP BY Art.Id, Art.Codigo, Art.Nombre,Art.Descripcion,Mar.Descripcion,Art.IdMarca ,Cat.Descripcion, Art.IdCategoria,Art.Precio");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -40,7 +41,7 @@ namespace negocio
                     {
                         Articulo.UrlImagen = (string)datos.Lector["ImagenUrl"];
                     }
-
+                    
                     Articulo.Marca = new Marca();
                     Articulo.Marca.Id = (int)datos.Lector["IdMarca"];
                     if (!(datos.Lector["Marca"] is DBNull))///ver crear helper para todas los null
@@ -56,7 +57,13 @@ namespace negocio
                         Articulo.Categoria.Descripcion = (string)datos.Lector["Categoria"];
                     }
                     else { Articulo.Categoria.Descripcion = "No tiene"; }
+                    if (!(datos.Lector["Precio"] is DBNull))
+                    {
+                        Articulo.Precio = datos.Lector.GetDecimal(datos.Lector.GetOrdinal("Precio"));
+                    }
+                    else { Articulo.Precio = 1; }
                     
+
                     lista.Add(Articulo);
                 }
 
@@ -83,7 +90,7 @@ namespace negocio
 
             try
             {
-                dato.setearConsulta("Insert Into Articulos(Codigo,Nombre,Descripcion,IdMarca,IdCategoria) values ('" + nuevo.CodigoArticulo + "','" + nuevo.Nombre + "','" + nuevo.Descripcion + "',@IdMarca,@IdCategoria)");
+                dato.setearConsulta("Insert Into Articulos(Codigo,Nombre,Descripcion,IdMarca,IdCategoria,Precio) values ('" + nuevo.CodigoArticulo + "','" + nuevo.Nombre + "','" + nuevo.Descripcion + "',@IdMarca,@IdCategoria,'"+nuevo.Precio+"')");
                 dato.setearParametro("@IdMarca", nuevo.Marca.Id);
                 dato.setearParametro("@IdCategoria", nuevo.Categoria.Id);
                 dato.ejecutarAccion();
@@ -98,7 +105,7 @@ namespace negocio
 
                 datoimagen.setearConsulta("insert into IMAGENES (IdArticulo,ImagenUrl)values(@IdArticulo,@ImagenUrl)");
                 datoimagen.setearParametro("@IdArticulo", imagenCargada.IDArticulo);
-                datoimagen.setearParametro("@ImagenUrl", nuevo.UrlImagen);
+                datoimagen.setearParametro("@ImagenUrl",nuevo.UrlImagen);
                 datoimagen.ejecutarAccion();
                 
             }
@@ -131,7 +138,7 @@ namespace negocio
                 DatosModificados.setearParametro("@Id", modi.IDArticulo);
                 DatosModificados.ejecutarAccion();
 
-                DatosModificadosImagen.setearConsulta("update Imagenes set IdArticulo=@id, ImagenUrl=@UrlImagen");
+                DatosModificadosImagen.setearConsulta("update Imagenes set ImagenUrl=@UrlImagen where IdArticulo=@id");
                 DatosModificadosImagen.setearParametro("@id", modi.IDArticulo);
                 DatosModificadosImagen.setearParametro("@UrlImagen", ima.ImagenUrl);
                 DatosModificadosImagen.ejecutarAccion();
