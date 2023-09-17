@@ -45,7 +45,7 @@ namespace TPWinForm_equipo_3
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 articulo.UrlImagen = txtUrlImagen.Text;//se guarda en un objeto clase imagen
-                articulo.Precio = SqlMoney.Parse(txtPrecio.Text);
+                articulo.Precio = float.Parse(txtPrecio.Text);
 
                 if(articulo.IDArticulo != 0)
                 {

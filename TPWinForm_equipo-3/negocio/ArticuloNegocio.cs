@@ -24,7 +24,7 @@ namespace negocio
             try
             {
 
-                datos.setearConsulta("SELECT Art.Id AS Id, Art.Codigo, Art.Nombre, Art.Descripcion, MIN(Ima.ImagenUrl) AS ImagenUrl,Mar.Id as 'IdMarca',Mar.Descripcion AS 'Marca' ,Cat.Id as 'IdCategoria',Cat.Descripcion AS 'Categoria'  \r\nFROM ARTICULOS Art \r\nLEFT JOIN IMAGENES Ima ON Art.Id = Ima.IdArticulo\r\nLEFT JOIN MARCAS Mar ON Art.IdMarca=Mar.Id\r\nLEFT JOIN CATEGORIAS Cat ON Art.IdCategoria=Cat.Id\r\nGROUP BY Art.Id, Art.Codigo, Art.Nombre,Art.Descripcion,Mar.Descripcion, Mar.Id,Cat.Descripcion, Cat.Id");
+                datos.setearConsulta("SELECT Art.Id AS Id, Art.Codigo, Art.Nombre, Art.Descripcion, MIN(Ima.ImagenUrl) AS ImagenUrl,Art.IdMarca ,Mar.Descripcion AS 'Marca', \r\nArt.IdCategoria,Cat.Descripcion AS 'Categoria'FROM ARTICULOS Art \r\nLEFT JOIN IMAGENES Ima ON Art.Id = Ima.IdArticulo\r\nLEFT JOIN MARCAS Mar ON Art.IdMarca=Mar.Id\r\nLEFT JOIN CATEGORIAS Cat ON Art.IdCategoria=Cat.Id\r\nGROUP BY Art.Id, Art.Codigo, Art.Nombre,Art.Descripcion,Mar.Descripcion,Art.IdMarca ,Cat.Descripcion, Art.IdCategoria");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -39,21 +39,22 @@ namespace negocio
                     {
                         Articulo.UrlImagen = (string)datos.Lector["ImagenUrl"];
                     }
+
                     Articulo.Marca = new Marca();
-                    Articulo.Marca.Id = (int)datos.Lector["Id"];
+                    Articulo.Marca.Id = (int)datos.Lector["IdMarca"];
                     if (!(datos.Lector["Marca"] is DBNull))///ver crear helper para todas los null
                     {
                         Articulo.Marca.Descripcion = (string)datos.Lector["Marca"];
                     }
                     else { Articulo.Marca.Descripcion = "No tiene"; }
-                    Articulo.Marca.Descripcion = (string)datos.Lector["Marca"];
+                   
                     Articulo.Categoria = new Categoria();
-                    Articulo.Categoria.Id = (int)datos.Lector["Id"];
-                  /*  if (!(datos.Lector["Categoria"] is DBNull))///ver crear helper para todas los null
+                    Articulo.Categoria.Id = (int)datos.Lector["IdCategoria"];
+                    if (!(datos.Lector["Categoria"] is DBNull))///ver crear helper para todas los null
                     {
                         Articulo.Categoria.Descripcion = (string)datos.Lector["Categoria"];
                     }
-                    else { Articulo.Categoria.Descripcion = "No tiene"; }*/
+                    else { Articulo.Categoria.Descripcion = "No tiene"; }
                     
                     lista.Add(Articulo);
                 }
@@ -91,15 +92,14 @@ namespace negocio
            
                 foreach (Articulo item in listaArticuloAgregado)
                 {
-                    imagenCargada.IDArticulo = item.IDArticulo;
-                    Console.WriteLine("ARTICULO CARGADO: " + imagenCargada.IDArticulo);
+                    imagenCargada.IDArticulo = item.IDArticulo;                    
                 }
 
                 datoimagen.setearConsulta("insert into IMAGENES (IdArticulo,ImagenUrl)values(@IdArticulo,@ImagenUrl)");
                 datoimagen.setearParametro("@IdArticulo", imagenCargada.IDArticulo);
                 datoimagen.setearParametro("@ImagenUrl", nuevo.UrlImagen);
                 datoimagen.ejecutarAccion();
-                Console.WriteLine("Consulta SQL para la Imagen: " + imagenCargada.IDArticulo);
+                
             }
             catch (Exception ex)
             {
@@ -116,13 +116,14 @@ namespace negocio
         public void Modificar(Articulo modi)
         {
             AccesoDatos DatosModificados = new AccesoDatos();
+           
             try
             {
                 DatosModificados.setearConsulta("UPDATE Articulos set Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion, IdMarca = @IdMarca, IdCategoria = @IdCategoria, Precio = @Precio  where Id = @Id");
                 DatosModificados.setearParametro("@Codigo",modi.CodigoArticulo);
                 DatosModificados.setearParametro("@Nombre",modi.Nombre);
                 DatosModificados.setearParametro("@Descripcion",modi.Descripcion);
-                DatosModificados.setearParametro("@IdMarca",modi.Marca.Id);
+                DatosModificados.setearParametro("@IdMarca", modi.Marca.Id);                 
                 DatosModificados.setearParametro("@IdCategoria",modi.Categoria.Id);
                 DatosModificados.setearParametro("@Precio",modi.Precio);
                 DatosModificados.setearParametro("@Id", modi.IDArticulo);
@@ -131,8 +132,6 @@ namespace negocio
             }
             catch (Exception ex)
             {
-
-                //Console.WriteLine("Error: " + ex.Message);
                 throw ex;
             }
             finally

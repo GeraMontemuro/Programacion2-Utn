@@ -19,7 +19,7 @@ namespace dominio
         public string UrlImagen { get; set; }
         public Marca Marca { get; set; }
         public Categoria Categoria{ get; set; }
-        public SqlMoney Precio { get; set; }
+        public float Precio { get; set; }
 
 
         public Articulo()
