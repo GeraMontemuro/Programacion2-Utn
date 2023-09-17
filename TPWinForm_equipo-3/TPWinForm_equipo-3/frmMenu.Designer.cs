@@ -36,16 +36,18 @@
             // btnListado
             // 
             this.btnListado.BackColor = System.Drawing.Color.Transparent;
+            this.btnListado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnListado.FlatAppearance.BorderSize = 0;
             this.btnListado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnListado.Font = new System.Drawing.Font("Wide Latin", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListado.Font = new System.Drawing.Font("Mongolian Baiti", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnListado.ForeColor = System.Drawing.Color.Transparent;
-            this.btnListado.Location = new System.Drawing.Point(31, 376);
+            this.btnListado.Location = new System.Drawing.Point(19, 379);
             this.btnListado.Margin = new System.Windows.Forms.Padding(2);
             this.btnListado.Name = "btnListado";
-            this.btnListado.Size = new System.Drawing.Size(235, 57);
+            this.btnListado.Size = new System.Drawing.Size(240, 57);
             this.btnListado.TabIndex = 0;
-            this.btnListado.Text = "VER LISTA";
+            this.btnListado.Text = "VER LISTADO";
+            this.btnListado.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnListado.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnListado.UseVisualStyleBackColor = false;
             this.btnListado.Click += new System.EventHandler(this.btnListado_Click);
@@ -55,14 +57,15 @@
             this.btnsalida.BackColor = System.Drawing.Color.Transparent;
             this.btnsalida.FlatAppearance.BorderSize = 0;
             this.btnsalida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnsalida.Font = new System.Drawing.Font("Wide Latin", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnsalida.Font = new System.Drawing.Font("Mongolian Baiti", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnsalida.ForeColor = System.Drawing.Color.Transparent;
-            this.btnsalida.Location = new System.Drawing.Point(88, 481);
+            this.btnsalida.Location = new System.Drawing.Point(81, 481);
             this.btnsalida.Margin = new System.Windows.Forms.Padding(2);
             this.btnsalida.Name = "btnsalida";
-            this.btnsalida.Size = new System.Drawing.Size(178, 26);
+            this.btnsalida.Size = new System.Drawing.Size(178, 41);
             this.btnsalida.TabIndex = 1;
-            this.btnsalida.Text = "SALIDA";
+            this.btnsalida.Text = "SALIR";
+            this.btnsalida.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnsalida.UseVisualStyleBackColor = false;
             this.btnsalida.Click += new System.EventHandler(this.btnsalida_Click);
             // 
@@ -81,7 +84,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "VentanaPrincipal";
+            this.Text = "Menú";
             this.TransparencyKey = System.Drawing.Color.LavenderBlush;
             this.ResumeLayout(false);
 
