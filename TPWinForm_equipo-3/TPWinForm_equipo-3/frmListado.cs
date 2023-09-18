@@ -146,7 +146,17 @@ namespace TPWinForm_equipo_3
               }
         }
 
-      
+        private void btndetalle_Click(object sender, EventArgs e)
+        {
+            Articulo ArticuloSeleccionado = new Articulo();
+            ArticuloSeleccionado = (Articulo)dgvArticulo.CurrentRow.DataBoundItem;
+            frmDetalle detalle = new frmDetalle(ArticuloSeleccionado);
+            detalle.ShowDialog();
+
+            
+
+
+        }
     }
 
 

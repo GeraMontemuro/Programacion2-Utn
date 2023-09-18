@@ -82,6 +82,9 @@
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ForeColor = System.Drawing.Color.Red;
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(542, 586);
+            this.MinimumSize = new System.Drawing.Size(542, 586);
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menú";

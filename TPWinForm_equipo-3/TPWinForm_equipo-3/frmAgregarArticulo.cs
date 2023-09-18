@@ -65,10 +65,21 @@ namespace TPWinForm_equipo_3
                 Close();
                 
             }
+            catch  (FormatException ex)
+            {
+                MessageBox.Show("Ingresa un precio en números por favor");
+            }
+
+            catch (OverflowException ex) 
+            {                          
+                MessageBox.Show("Superaste la cantidad de caracteres");                
+            }
+
             catch  (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+               
 
 
         }
@@ -127,5 +138,6 @@ namespace TPWinForm_equipo_3
                 pbxAgregarImagen.Load("https://production.listennotes.com/podcasts/el-podcast-m%C3%A1s-random-del-mundo-L6I3Ep9lRTB-xB_PCg0EDch.1400x1400.jpg");
             }
         }
+        
     }
 }

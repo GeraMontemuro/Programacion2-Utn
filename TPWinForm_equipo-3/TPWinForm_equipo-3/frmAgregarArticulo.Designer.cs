@@ -82,7 +82,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(130, 50);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(220, 20);
             this.txtNombre.TabIndex = 1;
@@ -90,7 +90,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(130, 74);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(220, 20);
             this.txtDescripcion.TabIndex = 2;
@@ -98,7 +98,7 @@
             // txtPrecio
             // 
             this.txtPrecio.Location = new System.Drawing.Point(130, 173);
-            this.txtPrecio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPrecio.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(220, 20);
             this.txtPrecio.TabIndex = 6;
@@ -106,7 +106,7 @@
             // btnConfirmar
             // 
             this.btnConfirmar.Location = new System.Drawing.Point(130, 208);
-            this.btnConfirmar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnConfirmar.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(101, 31);
             this.btnConfirmar.TabIndex = 7;
@@ -117,7 +117,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(248, 208);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(102, 31);
             this.btnCancelar.TabIndex = 8;
@@ -128,7 +128,7 @@
             // txtCodigo
             // 
             this.txtCodigo.Location = new System.Drawing.Point(130, 26);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(2);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(220, 20);
             this.txtCodigo.TabIndex = 0;
@@ -168,7 +168,7 @@
             this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategoria.FormattingEnabled = true;
             this.cboCategoria.Location = new System.Drawing.Point(130, 123);
-            this.cboCategoria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboCategoria.Margin = new System.Windows.Forms.Padding(2);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(220, 21);
             this.cboCategoria.TabIndex = 4;
@@ -178,7 +178,7 @@
             this.cboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMarca.FormattingEnabled = true;
             this.cboMarca.Location = new System.Drawing.Point(130, 98);
-            this.cboMarca.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboMarca.Margin = new System.Windows.Forms.Padding(2);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(220, 21);
             this.cboMarca.TabIndex = 3;
@@ -215,6 +215,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.RosyBrown;
             this.ClientSize = new System.Drawing.Size(653, 290);
             this.Controls.Add(this.pbxAgregarImagen);
             this.Controls.Add(this.lblUrlImagen);
@@ -233,7 +234,9 @@
             this.Controls.Add(this.lblCategoria);
             this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.lblNombre);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(669, 329);
+            this.MinimumSize = new System.Drawing.Size(669, 329);
             this.Name = "FrmAgregarArticulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Artículo";
